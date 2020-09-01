@@ -12,7 +12,7 @@ from app import create_app
 from app.commands import InitDbCommand
 
 # Setup Flask-Script with command line commands
-manager = Manager(create_app)
+manager = Manager(create_app())
 manager.add_command('db', MigrateCommand)
 manager.add_command('init_db', InitDbCommand)
 

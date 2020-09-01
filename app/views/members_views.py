@@ -20,7 +20,7 @@ def set_lang(lang):
     gettext.install('lang', i18n_dir)
     trans_file = i18n_dir + lang + '/LC_MESSAGES/flask_user'
     tr = gettext.translation(trans_file, 'locale',  languages=[lang])
-    tr.install(True)
+    tr.install()
     app.jinja_env.install_gettext_translations(tr)
 
 
@@ -41,7 +41,8 @@ def before_request():
 @members_blueprint.route('/members/')
 @login_required
 def member_page():
-    return render_template('pages/user_page.html')
+    items = [["Gleb", 26], ["Arsenikum", 15], ["Sergey", 17]]
+    return render_template('pages/user_page.html', items=items)
 
 
 @members_blueprint.route('/members/profile/', methods=['GET', 'POST'])
